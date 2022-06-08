@@ -3,4 +3,6 @@
 
 ![Observer、Dep、Watcher关系图](./reactive.png)
 
-<<< @/docs/v2/reactive/test.js
+<<< @/docs/.vuepress/public/v2/reactive/test.js
+
+<Playground code-path="/vue-playground/v2/reactive/test.js" />
