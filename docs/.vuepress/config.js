@@ -7,12 +7,16 @@ module.exports = {
     sidebar: {
       '/v2/': [
         '',
-        {
-          title: '数据驱动',
-          collapsable: false,
-          children: [['reactive/', 'Introduction']],
-        },
+        'reactive/',
+        // {
+        //   title: '',
+        //   collapsable: false,
+        //   children: [],
+        // },
       ],
     },
   },
+  markdown: {
+    lineNumbers: true
+  }
 };

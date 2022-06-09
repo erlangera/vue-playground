@@ -1,9 +1,8 @@
 <template>
   <div>
     <iframe v-if="iframeFlag" ref="sandboxRef" src="/vue-playground/sandbox.html" style="display: none;" @load="run(codePath)"></iframe>
-    <div ref="scriptContainerRef"></div>
     <input v-model="debuggerFlag" type="checkbox">Dep断点</input>
-    <button @click="play">play</button>
+    <button @click="play">运行</button>
   </div>
 </template>
 
