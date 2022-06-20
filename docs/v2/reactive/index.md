@@ -10,7 +10,7 @@
 
 <<< @/docs/.vuepress/public/v2/reactive/object.js
 
-<Playground :code-path="$withBase('/v2/reactive/object.js')" />
+<Playground :code-path="$withBase('/v2/reactive/object.js')" :debugger-path-fn="flag => $withBase(`/v2/reactive/toggle-debugger-${flag}.js`)" />
 
 如图`Observer`在对象下添加`__ob__`属性同时将属性字段转换为 getter/setter 属性。
 
@@ -39,7 +39,7 @@
 
 <<< @/docs/.vuepress/public/v2/reactive/array.js
 
-<Playground :code-path="$withBase('/v2/reactive/array.js')" />
+<Playground :code-path="$withBase('/v2/reactive/array.js')" :debugger-path-fn="flag => $withBase(`/v2/reactive/toggle-debugger-${flag}.js`)" />
 
 下图为依赖收集结果，可以看到虽然只访问了数组，但是实际数组内所有对象值的依赖也被收集，即当访问值为数组时依赖收集会下探所有子数组元素项。如果对数组元素对象使用`$set/$delete`强制触发`notify`相应`Watcher`也会被触发。
 1. `data`的`obj`字段的`getter/setter`的`dep`

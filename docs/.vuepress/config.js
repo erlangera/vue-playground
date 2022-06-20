@@ -8,6 +8,7 @@ module.exports = {
       '/v2/': [
         '',
         'reactive/',
+        'constructor/',
         // {
         //   title: '',
         //   collapsable: false,

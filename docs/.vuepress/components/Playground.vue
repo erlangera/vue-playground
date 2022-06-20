@@ -1,7 +1,9 @@
 <template>
   <div>
     <iframe v-if="iframeFlag" ref="sandboxRef" src="/vue-playground/sandbox.html" style="display: none;" @load="run(codePath)"></iframe>
-    <input v-model="debuggerFlag" type="checkbox">Dep断点</input>
+    <span v-if="debuggerPathFn">
+      <input v-model="debuggerFlag" type="checkbox" />断点
+    </span>
     <button @click="play">运行</button>
   </div>
 </template>
@@ -13,6 +15,9 @@ export default {
     codePath: {
       type: String,
     },
+    debuggerPathFn: {
+      type: Function,
+    }
   },
   data() {
     return {
@@ -32,11 +37,15 @@ export default {
       }
     },
     run(path) {
-      this.$refs.sandboxRef.contentWindow.run(
-        this.$withBase(`/v2/reactive/toggle-debugger-${this.debuggerFlag}.js`)
-      ).then(() => {
+      if (this.debuggerPathFn) {
+        this.$refs.sandboxRef.contentWindow.run(
+          this.debuggerPathFn(this.debuggerFlag)
+        ).then(() => {
+          this.$refs.sandboxRef.contentWindow.run(path);
+        })
+      } else {
         this.$refs.sandboxRef.contentWindow.run(path);
-      })
+      }
     }
   },
 };
