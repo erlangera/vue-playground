@@ -12,6 +12,9 @@ Vue对象的生命周期流程如下图所示。
 
 通过单步调试可以看到最终会执行`src/core/instance/init.ts`中`_init`方法，观察`vm`变化，可以看到vm被添加`_uid`、`$options`等属性和方法。
 
+
+<Collapse>
+
 ``` js
 export function initMixin(Vue: Component) {
   Vue.prototype._init = function (options?: Record<string, any>) {
@@ -72,6 +75,8 @@ export function initMixin(Vue: Component) {
   }
 }
 ```
+
+</Collapse>
 
 ![_init](./lifecycle2.png)
 
