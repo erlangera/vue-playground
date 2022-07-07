@@ -12,6 +12,7 @@ module.exports = {
         '',
         'reactive/',
         'constructor/',
+        'lifecycle/',
         // {
         //   title: '',
         //   collapsable: false,
