@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>构造函数 | Vue 源码</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="Vue源码实验例子">
+    
+    <link rel="preload" href="/vue-playground/assets/css/0.styles.ed067cd1.css" as="style"><link rel="preload" href="/vue-playground/assets/js/app.53fbfa21.js" as="script"><link rel="preload" href="/vue-playground/assets/js/2.170aa520.js" as="script"><link rel="preload" href="/vue-playground/assets/js/4.418ac75d.js" as="script"><link rel="preload" href="/vue-playground/assets/js/5.5b123cf0.js" as="script"><link rel="prefetch" href="/vue-playground/assets/js/10.1a91149b.js"><link rel="prefetch" href="/vue-playground/assets/js/11.1ec75a65.js"><link rel="prefetch" href="/vue-playground/assets/js/12.50abe8fd.js"><link rel="prefetch" href="/vue-playground/assets/js/3.1bedc276.js"><link rel="prefetch" href="/vue-playground/assets/js/6.418cbdba.js"><link rel="prefetch" href="/vue-playground/assets/js/7.97bee6c7.js"><link rel="prefetch" href="/vue-playground/assets/js/8.1a34e50b.js"><link rel="prefetch" href="/vue-playground/assets/js/9.3d94d65b.js">
+    <link rel="stylesheet" href="/vue-playground/assets/css/0.styles.ed067cd1.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vue-playground/" class="home-link router-link-active"><!----> <span class="site-name">Vue 源码</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vue-playground/v2/" class="nav-link router-link-active">
+  Vue 2.x
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/vue-playground/v2/" class="nav-link router-link-active">
+  Vue 2.x
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/vue-playground/v2/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/vue-playground/v2/reactive/" class="sidebar-link">响应式原理</a></li><li><a href="/vue-playground/v2/constructor/" aria-current="page" class="active sidebar-link">构造函数</a></li><li><a href="/vue-playground/v2/lifecycle/" class="sidebar-link">生命周期</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="构造函数"><a href="#构造函数" class="header-anchor">#</a> 构造函数</h1> <p>构造函数Vue的构造过程，这里以runtime+compiler版本为例。依赖路径为<code>src\platforms\web\entry-runtime-with-compiler.ts</code> -&gt; <code>src\platforms\web\runtime\index.ts</code> -&gt; <code>src\core\index.ts</code> -&gt; <code>src\core\instance\index.ts</code>。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">&quot;../vue.study.esm.js&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">module</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> Vue <span class="token punctuation">}</span> <span class="token operator">=</span> module<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><div data-v-981a185e><!----> <button data-v-981a185e>运行</button> <div data-v-981a185e><!----></div></div> <p>如下图<code>src\core\instance\index.ts</code>中设置断点，观察Vue对象变化可以发现其中主要是在<code>Vue.prototype</code>上添加各类方法。
+<img src="/vue-playground/assets/img/constructor.c382276a.png" alt="src\core\instance\index.ts"></p> <p><code>src\core\index.ts</code>中，主要在Vue对象上添加了各类方法，同时也在<code>Vue.prototype</code>上添加部分属性。
+<img src="/vue-playground/assets/img/constructor2.75c737d9.png" alt="src\core\index.ts"></p> <p><code>src\platforms\web\runtime\index.ts</code>中，主要设置<code>Vue.config</code>和<code>Vue.options</code>，同时在<code>Vue.prototype</code>上添加<code>__patch__</code>和<code>$mount</code>方法。
+<img src="/vue-playground/assets/img/constructor3.b7b7c7bf.png" alt="src\platforms\web\runtime\index.ts"></p> <p><code>src\platforms\web\entry-runtime-with-compiler.ts</code>中重置了<code>Vue.prototype</code>上的<code>$mount</code>方法，同时向Vue对象上添加<code>compile</code>方法。
+<img src="/vue-playground/assets/img/constructor4.61763122.png" alt="src\platforms\web\entry-runtime-with-compiler.ts"></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/vue-playground/v2/reactive/" class="prev">
+        响应式原理
+      </a></span> <span class="next"><a href="/vue-playground/v2/lifecycle/">
+        生命周期
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/vue-playground/assets/js/app.53fbfa21.js" defer></script><script src="/vue-playground/assets/js/2.170aa520.js" defer></script><script src="/vue-playground/assets/js/4.418ac75d.js" defer></script><script src="/vue-playground/assets/js/5.5b123cf0.js" defer></script>
+  </body>
+</html>
