@@ -82,6 +82,8 @@ export function initMixin(Vue: Component) {
 
 <Playground :code-path="$withBase('/v2/lifecycle/mount.js')" :show-iframe="true"/>
 
+通过单步调试可以看到最终会执行`src/core/instance/lifecycle.ts`中`mountComponent`方法，通过一个绑定`_update`和`_render`方法`Watcher`来实现首次渲染和动态渲染。
+
 ``` js
 export function mountComponent(
   vm: Component,
@@ -168,7 +170,6 @@ export function mountComponent(
 }
 ```
 
-通过单步调试可以看到最终会执行`src/core/instance/lifecycle.ts`中`mountComponent`方法。
 ## update阶段
 
 ## destroy阶段
