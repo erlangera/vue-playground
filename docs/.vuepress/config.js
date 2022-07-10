@@ -12,7 +12,7 @@ module.exports = {
         'reactive/',
         'constructor/',
         'lifecycle/',
-        'component',
+        'component/',
         // {
         //   title: '',
         //   collapsable: false,
@@ -22,6 +22,6 @@ module.exports = {
     },
   },
   markdown: {
-    lineNumbers: true,
+    // lineNumbers: true,
   },
 };

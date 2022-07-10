@@ -15,7 +15,7 @@ Vue对象的生命周期流程如下图所示。
 
 <Collapse>
 
-``` js{41,45}
+``` ts{41,45}
 export function initMixin(Vue: Component) {
   Vue.prototype._init = function (options?: Record<string, any>) {
     const vm: Component = this
@@ -91,7 +91,7 @@ export function initMixin(Vue: Component) {
 
 <Collapse>
 
-``` js{31,68,80}
+``` ts{31,68,80}
 export function mountComponent(
   vm: Component,
   el: Element | null | undefined,
@@ -190,7 +190,7 @@ export function mountComponent(
 
 <Collapse>
 
-``` js{7}
+``` ts{7}
 function callUpdatedHooks(queue) {
   let i = queue.length
   while (i--) {
@@ -216,7 +216,7 @@ function callUpdatedHooks(queue) {
 
 <Collapse>
 
-``` js{29}
+``` ts{29}
 Vue.prototype.$destroy = function () {
   const vm: Component = this;
   if (vm._isBeingDestroyed) {
