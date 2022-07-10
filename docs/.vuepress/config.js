@@ -13,6 +13,7 @@ module.exports = {
         'constructor/',
         'lifecycle/',
         'component/',
+        'directive/'
         // {
         //   title: '',
         //   collapsable: false,
