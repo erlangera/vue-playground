@@ -176,7 +176,7 @@ v-on用于绑定事件
 
 <<< @/docs/.vuepress/public/v2/directive/on.js
 
-<Playground :code-path="$withBase('/v2/directive/on.js')"/>
+<Playground :code-path="$withBase('/v2/directive/on.js')" :show-iframe="true" />
 
 在解析AST时处理标签结尾时调用`closeElement->processElement->processAttrs->addHandler`会对v-on解析为events属性。
 
@@ -454,7 +454,12 @@ export function genHandlers(
 }
 ```
 </Collapse>
-## 自定义型
+
+渲染到页面时调用路径为`_update->__patch__->createElm->invokeCreateHooks->updateListeners->updateListeners->add`最终将事件绑定到DOM元素上。
+
+
+
+## 自定义指令
 v-model
 
 v-show

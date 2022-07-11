@@ -1,5 +1,13 @@
 import("../vue.study.esm.js").then((module) => {
   const { Vue } = module;
 
-  const o = Vue.compile("<span v-on:click='Date.now()'>test</span>");
+  const app = new Vue({
+    data() {
+      return {
+        value: 1,
+      };
+    },
+    template: "<span v-on:click='value++'>{{value}}</span>"
+  });
+  app.$mount("#app");
 });
