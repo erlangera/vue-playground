@@ -457,9 +457,17 @@ export function genHandlers(
 
 渲染到页面时调用路径为`_update->__patch__->createElm->invokeCreateHooks->updateListeners->updateListeners->add`最终将事件绑定到DOM元素上。
 
+## 指令
+v-show和v-model为两个内置指令
 
+<<< @/docs/.vuepress/public/v2/directive/show.js
 
-## 自定义指令
-v-model
+<Playground :code-path="$withBase('/v2/directive/show.js')" :show-iframe="true" />
 
-v-show
+在解析AST时处理标签结尾时调用`closeElement->processElement->processAttrs->addDirective`在节点增加属性directives，在渲染函数函数中也是陪配置到第二个参数的directives数组，生成到vNode的data.directives。渲染到页面时调用路径为`_update->__patch__->createElm->invokeCreateHooks->updateDirectives->_update`从vm.$options解析出指令定义，并依据情况调用具体钩子。其中v-show和v-model分别定义在`src\platforms\web\runtime\directives\show.ts`和`src\platforms\web\runtime\directives\model.ts`
+
+v-show主要设置`el.style.display`，v-model， 补充实验组件上的v-model
+
+<<< @/docs/.vuepress/public/v2/directive/model.js
+
+<Playground :code-path="$withBase('/v2/directive/model.js')" :show-iframe="true" />
