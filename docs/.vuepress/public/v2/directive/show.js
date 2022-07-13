@@ -7,7 +7,7 @@ import("../vue.study.esm.js").then((module) => {
         value: 1,
       };
     },
-    template: "<span v-on:click='value++'>{{value}}<span v-show='value%2'>Test</span></span>"
+    template: "<span v-on:click='value++'>{{value}}<span v-show='value%2' style='display: block;'>Test</span></span>"
   });
   app.$mount("#app");
 });
