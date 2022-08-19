@@ -5,7 +5,10 @@ module.exports = {
   head: [['link', { rel: 'icon', href: '/logo.svg' }]],
   plugins: ['@vuepress/plugin-medium-zoom'],
   themeConfig: {
-    nav: [{ text: 'Vue 2.x', link: '/v2/' }],
+    nav: [
+      { text: 'Vue 2.x', link: '/v2/' },
+      { text: 'Vue 3.x', link: '/v3/' }
+    ],
     sidebar: {
       '/v2/': [
         '',
@@ -20,6 +23,10 @@ module.exports = {
         //   children: [],
         // },
       ],
+      '/v3/': [
+        '',
+        'reactive/'
+      ]
     },
   },
   markdown: {
