@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Vue 源码',
   description: 'Vue源码实验例子',
-  base: '/vue-playground/',
+  base: '/',
   head: [['link', { rel: 'icon', href: '/logo.svg' }]],
   plugins: ['@vuepress/plugin-medium-zoom'],
   themeConfig: {
