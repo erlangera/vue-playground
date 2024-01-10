@@ -5,7 +5,7 @@
     </span>
     <button @click="play">运行</button>
     <div :class="{placeholder: showIframe}">
-      <iframe v-if="iframeFlag" v-show="showIframe" ref="sandboxRef" src="/vue-playground/sandbox.html" @load="run(codePath)"></iframe>
+      <iframe v-if="iframeFlag" v-show="showIframe" ref="sandboxRef" src="/sandbox.html" @load="run(codePath)"></iframe>
     </div>
   </div>
 </template>
